@@ -5,9 +5,24 @@ import math
 MAX_STEPS = 100
 
 def add_polygon( points, x0, y0, z0, x1, y1, z1, x2, y2, z2 ):
+    add_point(points, x0, y0, z0)
+    add_point(points, x1, y1, z1)
+    add_point(points, x1, y1, z1)
     pass
 
 def draw_polygons( points, screen, color ):
+    if len( matrix ) < 3:
+        print "Need at least 3 points to draw a polygon"
+        
+    p = 0
+    while p < len( matrix ) - 2:
+        draw_line( screen, matrix[p][0], matrix[p][1],
+                   matrix[p+1][0], matrix[p+1][1], color )
+        draw_line( screen, matrix[p+1][0], matrix[p+1][1],
+                   matrix[p+2][0], matrix[p+2][1], color )
+        draw_line( screen, matrix[p+2][0], matrix[p+2][1],
+                   matrix[p][0], matrix[p][1], color )
+        p+= 3
     pass
 
 def add_box( points, x, y, z, width, height, depth ):
