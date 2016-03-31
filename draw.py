@@ -7,21 +7,21 @@ MAX_STEPS = 100
 def add_polygon( points, x0, y0, z0, x1, y1, z1, x2, y2, z2 ):
     add_point(points, x0, y0, z0)
     add_point(points, x1, y1, z1)
-    add_point(points, x1, y1, z1)
+    add_point(points, x2, y2, z2)
     pass
 
 def draw_polygons( points, screen, color ):
-    if len( matrix ) < 3:
+    if len( points ) < 3:
         print "Need at least 3 points to draw a polygon"
         
     p = 0
-    while p < len( matrix ) - 2:
-        draw_line( screen, matrix[p][0], matrix[p][1],
-                   matrix[p+1][0], matrix[p+1][1], color )
-        draw_line( screen, matrix[p+1][0], matrix[p+1][1],
-                   matrix[p+2][0], matrix[p+2][1], color )
-        draw_line( screen, matrix[p+2][0], matrix[p+2][1],
-                   matrix[p][0], matrix[p][1], color )
+    while p < len( points ) - 2:
+        draw_line( screen, points[p][0], points[p][1],
+                   points[p+1][0], points[p+1][1], color )
+        draw_line( screen, points[p+1][0], points[p+1][1],
+                   points[p+2][0], points[p+2][1], color )
+        draw_line( screen, points[p+2][0], points[p+2][1],
+                   points[p][0], points[p][1], color )
         p+= 3
     pass
 
@@ -29,7 +29,7 @@ def add_box( points, x, y, z, width, height, depth ):
     x1 = x + width
     y1 = y - height
     z1 = z - depth
-
+    """
     add_edge( points, 
               x, y, z, 
               x, y, z )
@@ -54,6 +54,67 @@ def add_box( points, x, y, z, width, height, depth ):
     add_edge( points, 
               x1, y1, z1, 
               x1, y1, z1 )
+    """
+    #front
+    add_polygon(points,
+                x1,y,z,
+                x,y,z,
+                x,y1,z)
+    add_polygon(points,
+                x1,y,z,
+                x,y1,z,
+                x1,y1,z)
+    """
+    #back
+    add_polygon(points,
+                x,y,z1,
+                x1,y,z1,
+                x1,y1,z1)
+    add_polygon(points,
+                x,y,z1,
+                x1,y1,z1,
+                x,y1,z1)
+    
+    #top
+    add_polygon(points,
+                x1,y,z1,
+                x,y,z,
+                x1,y,z)
+    add_polygon(points,
+                x1,y,z1,
+                x,y,z1,
+                x,y,z)
+
+    #bot
+    add_polygon(points,
+                x1,y1,z,
+                x,y1,z,
+                x,y1,z1)
+    add_polygon(points,
+                x1,y1,z,
+                x,y1,z1,
+                x1,y1,z1)
+    
+    #left
+    add_polygon(points,
+                x1,y,z,
+                x,y,z,
+                x,y1,z)
+    add_polygon(points,
+                x1,y,z,
+                x,y,z,
+                x,y1,z)
+
+    #right
+    add_polygon(points,
+                x1,y,z,
+                x,y,z,
+                x,y1,z)
+    add_polygon(points,
+                x1,y,z,
+                x,y,z,
+                x,y1,z)
+    """
 
 def add_sphere( points, cx, cy, cz, r, step ):
     
