@@ -29,32 +29,8 @@ def add_box( points, x, y, z, width, height, depth ):
     x1 = x + width
     y1 = y - height
     z1 = z - depth
-    """
-    add_edge( points, 
-              x, y, z, 
-              x, y, z )
-    add_edge( points, 
-              x, y1, z, 
-              x, y1, z )
-    add_edge( points, 
-              x1, y, z, 
-              x1, y, z )
-    add_edge( points, 
-              x1, y1, z, 
-              x1, y1, z )
-    add_edge( points, 
-              x, y, z1, 
-              x, y, z1 )
-    add_edge( points, 
-              x, y1, z1, 
-              x, y1, z1 )
-    add_edge( points, 
-              x1, y, z1, 
-              x1, y, z1 )
-    add_edge( points, 
-              x1, y1, z1, 
-              x1, y1, z1 )
-    """
+
+    
     #front
     add_polygon(points,
                 x1,y,z,
@@ -64,7 +40,7 @@ def add_box( points, x, y, z, width, height, depth ):
                 x1,y,z,
                 x,y1,z,
                 x1,y1,z)
-    """
+    
     #back
     add_polygon(points,
                 x,y,z1,
@@ -85,6 +61,7 @@ def add_box( points, x, y, z, width, height, depth ):
                 x,y,z1,
                 x,y,z)
 
+    
     #bot
     add_polygon(points,
                 x1,y1,z,
@@ -95,26 +72,28 @@ def add_box( points, x, y, z, width, height, depth ):
                 x,y1,z1,
                 x1,y1,z1)
     
+   
+    
     #left
     add_polygon(points,
-                x1,y,z,
                 x,y,z,
+                x,y1,z1,
                 x,y1,z)
     add_polygon(points,
-                x1,y,z,
                 x,y,z,
-                x,y1,z)
-
+                x,y,z1,
+                x,y1,z1)
+    
     #right
     add_polygon(points,
-                x1,y,z,
-                x,y,z,
-                x,y1,z)
+                x1,y,z1,
+                x1,y1,z,
+                x1,y1,z1)
     add_polygon(points,
+                x1,y,z1,
                 x1,y,z,
-                x,y,z,
-                x,y1,z)
-    """
+                x1,y1,z)
+   
 
 def add_sphere( points, cx, cy, cz, r, step ):
     
