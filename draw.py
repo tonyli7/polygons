@@ -60,7 +60,7 @@ def add_box( points, x, y, z, width, height, depth ):
                 x1,y,z1,
                 x,y,z1,
                 x,y,z)
-
+    
     
     #bot
     add_polygon(points,
@@ -72,7 +72,7 @@ def add_box( points, x, y, z, width, height, depth ):
                 x,y1,z1,
                 x1,y1,z1)
     
-   
+    
     
     #left
     add_polygon(points,
@@ -118,6 +118,10 @@ def add_sphere( points, cx, cy, cz, r, step ):
             add_polygon( points,
                         temp[index][0], temp[index][1], temp[index][2],
                         temp[index+1][0], temp[index+1][1], temp[index+1][2],
+                        temp[index+step+1][0], temp[index+step+1][1], temp[index+step+1][2])
+            add_polygon( points,
+                        temp[index][0], temp[index][1], temp[index][2],
+                        temp[index+step][0], temp[index+step][1], temp[index+step][2],
                         temp[index+step+1][0], temp[index+step+1][1], temp[index+step+1][2])
             longt+= 1
         lat+= 1

@@ -9,9 +9,12 @@ color = [ 0, 255, 0 ]
 edges = []
 transform = new_matrix()
 
-f="script_3d"
+f=open("script_3d","r")
+edges=new_matrix(4,0)
+
 if len(sys.argv) == 2:
     f = open(sys.argv[1])
+
 
 parse_file( f, edges, transform, screen, color )
 
