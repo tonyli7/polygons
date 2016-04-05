@@ -107,22 +107,22 @@ def add_sphere( points, cx, cy, cz, r, step ):
     longt = 0
     longt_stop = num_steps
     
-    while lat < lat_stop:
+    while 2*lat < lat_stop:
         longt = 0
         while longt < longt_stop:
             
             index = lat * num_steps + longt
-            """            
-            add_edge( points, temp[index][0], temp[index][1], temp[index][2], temp[index][0], temp[index][1], temp[index][2] )
-            """
+            
             add_polygon( points,
-                        temp[index][0], temp[index][1], temp[index][2],
-                        temp[index+1][0], temp[index+1][1], temp[index+1][2],
-                        temp[index+step+1][0], temp[index+step+1][1], temp[index+step+1][2])
+                         temp[index][0], temp[index][1], temp[index][2],
+                         temp[index+1][0], temp[index+1][1], temp[index+1][2],
+                         temp[index+num_steps+1][0], temp[index+num_steps+1][1], temp[index+num_steps+1][2])
+            
             add_polygon( points,
-                        temp[index][0], temp[index][1], temp[index][2],
-                        temp[index+step][0], temp[index+step][1], temp[index+step][2],
-                        temp[index+step+1][0], temp[index+step+1][1], temp[index+step+1][2])
+                         temp[index][0], temp[index][1], temp[index][2],
+                         temp[index+num_steps][0], temp[index+num_steps][1], temp[index+num_steps][2],
+                         temp[index+num_steps+1][0], temp[index+num_steps+1][1], temp[index+num_steps+1][2])
+            
             longt+= 1
         lat+= 1
 
