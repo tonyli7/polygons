@@ -112,7 +112,8 @@ def add_sphere( points, cx, cy, cz, r, step ):
         while longt < longt_stop:
             
             index = lat * num_steps + longt
-            
+          
+
             add_polygon( points,
                          temp[index][0], temp[index][1], temp[index][2],
                          temp[index+1][0], temp[index+1][1], temp[index+1][2],
@@ -155,9 +156,9 @@ def add_torus( points, cx, cy, cz, r0, r1, step ):
 
     generate_torus( temp, cx, cy, cz, r0, r1, step )
 
-    lat = 0
+    lat = -num_steps
     lat_stop = num_steps
-    longt = 0
+    longt = -num_steps
     longt_stop = num_steps
     
     while 2*lat < lat_stop:
@@ -165,6 +166,7 @@ def add_torus( points, cx, cy, cz, r0, r1, step ):
         while longt < longt_stop:
             
             index = lat * num_steps + longt
+           
             add_polygon( points,
                          temp[index][0], temp[index][1], temp[index][2],
                          temp[index+1][0], temp[index+1][1], temp[index+1][2],
