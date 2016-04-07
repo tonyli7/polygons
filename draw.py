@@ -16,12 +16,32 @@ def draw_polygons( points, screen, color ):
         
     p = 0
     while p < len( points ) - 2:
-        draw_line( screen, points[p][0], points[p][1],
-                   points[p+1][0], points[p+1][1], color )
-        draw_line( screen, points[p+1][0], points[p+1][1],
-                   points[p+2][0], points[p+2][1], color )
-        draw_line( screen, points[p+2][0], points[p+2][1],
-                   points[p][0], points[p][1], color )
+
+        Ax=points[p+1][0]-points[p][0]
+        Ay=points[p+1][1]-points[p][1]
+        Az=points[p+1][2]-points[p][2]
+
+        Bx=points[p+2][0]-points[p][0]
+        By=points[p+2][1]-points[p][1]
+        Bz=points[p+2][2]-points[p][2]
+        
+        N_vect=[Ay*Bz - Az*By,
+                Az*Bx - Ax*Bz,
+                Ax*By - Ay*Bx]
+
+        V_vect=[0,0,-1]
+       
+
+        theta=-N_vect[2]
+       
+        if theta < 0:
+        
+            draw_line( screen, points[p][0], points[p][1],
+                       points[p+1][0], points[p+1][1], color )
+            draw_line( screen, points[p+1][0], points[p+1][1],
+                       points[p+2][0], points[p+2][1], color )
+            draw_line( screen, points[p+2][0], points[p+2][1],
+                       points[p][0], points[p][1], color )
         p+= 3
     pass
 
